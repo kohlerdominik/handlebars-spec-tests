@@ -34,11 +34,12 @@ class SpecDataProvider
             ? $this->newExceptionSpecification($json)
             : $this->newStringSpecification($json);
 
-        $spec->setDescription(implode(': ', [
-            $json['description'] ?? null,
-            $json['it'] ?? null,
-            $json['number'] ?? null,
-        ]));
+        $spec->setDescription(
+            SpecificationKeyGenerator::make(
+                $json['description'] ?? null,
+                $json['it'] ?? null,
+                $json['number'] ?? null
+            ));
 
         if (isset($json['message'])) {
             $spec->setMessage($json['message']);
