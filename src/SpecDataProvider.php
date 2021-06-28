@@ -37,7 +37,7 @@ class SpecDataProvider
         $spec->setDescription(implode(': ', [
             $json['description'] ?? null,
             $json['it'] ?? null,
-            $json['number'],
+            $json['number'] ?? null,
         ]));
 
         if (isset($json['message'])) {
