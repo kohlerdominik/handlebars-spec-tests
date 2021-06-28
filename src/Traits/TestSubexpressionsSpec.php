@@ -18,6 +18,6 @@ trait TestSubexpressionsSpec
 
     public function subexpressionsSpecificationDataProvider()
     {
-        $this->parseSpecFile('subexpressions.json');
+        yield from $this->parseSpecFile('subexpressions.json');
     }
 }

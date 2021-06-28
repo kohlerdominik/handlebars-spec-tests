@@ -18,6 +18,6 @@ trait TestWhitespaceControlSpec
 
     public function whitespaceControlSpecificationDataProvider()
     {
-        $this->parseSpecFile('whitespace-control.json');
+        yield from $this->parseSpecFile('whitespace-control.json');
     }
 }

@@ -4,20 +4,20 @@ namespace KohlerDominik\SpecTester\Traits;
 
 use KohlerDominik\SpecTester\Specifications\AbstractSpecification;
 
-trait TestHelpersSpec
+trait TestStringParamsSpec
 {
     /**
-     * @dataProvider helpersSpecificationDataProvider
+     * @dataProvider stringParamsSpecificationDataProvider
      *
      * @param AbstractSpecification $specification
      */
-    public function testHelpersSpecification($specification)
+    public function testStringParamsSpecification($specification)
     {
         return $this->runSpecificationTest($specification);
     }
 
-    public function helpersSpecificationDataProvider()
+    public function stringParamsSpecificationDataProvider()
     {
-        $this->parseSpecFile('helpers.json');
+        yield from $this->parseSpecFile('string-params.json');
     }
 }

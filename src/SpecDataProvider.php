@@ -35,8 +35,8 @@ class SpecDataProvider
             : $this->newStringSpecification($json);
 
         $spec->setDescription(implode(': ', [
-            $spec['description'] ?? null,
-            $spec['it'] ?? null,
+            $json['description'] ?? null,
+            $json['it'] ?? null,
         ]));
 
         if (isset($json['message'])) {

@@ -18,6 +18,6 @@ trait TestTrackIdsSpec
 
     public function trackIdsSpecificationDataProvider()
     {
-        $this->parseSpecFile('track-ids.json');
+        yield from $this->parseSpecFile('track-ids.json');
     }
 }

@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 
 abstract class AbstractTestCase extends TestCase
 {
+    const SPEC_PATH = 'vendor/jbboehr/handlebars-spec/spec/';
+
     /**
      * @param AbstractSpecification $specification
      * @return mixed
@@ -35,6 +37,6 @@ abstract class AbstractTestCase extends TestCase
     {
         $provider = new SpecDataProvider();
 
-        yield $provider->parseFile(static::SPEC_PATH . $fileName);
+        yield from $provider->parseFile(static::SPEC_PATH . $fileName);
     }
 }

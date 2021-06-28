@@ -4,20 +4,20 @@ namespace KohlerDominik\SpecTester\Traits;
 
 use KohlerDominik\SpecTester\Specifications\AbstractSpecification;
 
-trait TestBasicSpec
+trait TestStrictSpec
 {
     /**
-     * @dataProvider basicSpecificationDataProvider
+     * @dataProvider strictSpecificationDataProvider
      *
      * @param AbstractSpecification $specification
      */
-    public function testBlockSpecification($specification)
+    public function testStrictSpecification($specification)
     {
         return $this->runSpecificationTest($specification);
     }
 
-    public function basicSpecificationDataProvider()
+    public function strictSpecificationDataProvider()
     {
-        $this->parseSpecFile('basic.json');
+        yield from $this->parseSpecFile('strict.json');
     }
 }

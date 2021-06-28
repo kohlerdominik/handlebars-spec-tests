@@ -17,8 +17,6 @@ use KohlerDominik\SpecTester\Traits\TestWhitespaceControlSpec;
 
 abstract class AllSpecificationsTest extends AbstractTestCase
 {
-    const SPEC_PATH = 'vendor/jbboehr/handlebars-spec';
-
     use TestBasicSpec;
     use TestBlocksSpec;
     use TestBuiltinsSpec;
