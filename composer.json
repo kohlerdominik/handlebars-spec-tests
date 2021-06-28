@@ -1,0 +1,26 @@
+{
+  "name": "kohlerdominik/handlebars-spec-tests",
+  "description": "Tests Handlebars specification",
+  "keywords": ["template", "mustache", "handlebars", "spec"],
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Dominik Kohler"
+    }
+  ],
+  "require": {
+    "php": "^7.0|^8.0",
+    "jbboehr/handlebars-spec": "^104.7"
+  },
+  "require-dev": {
+    "ext-json": "*",
+    "phpunit/phpunit": "^7|^8|^9"
+  },
+  "autoload": {
+    "psr-4": {
+      "KohlerDominik\\SpecTester\\": "src/"
+    }
+  }
+}
