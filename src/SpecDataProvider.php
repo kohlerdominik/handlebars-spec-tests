@@ -37,6 +37,7 @@ class SpecDataProvider
         $spec->setDescription(implode(': ', [
             $json['description'] ?? null,
             $json['it'] ?? null,
+            $json['number'],
         ]));
 
         if (isset($json['message'])) {
@@ -77,7 +78,7 @@ class SpecDataProvider
 
         $transformedHelpers = [];
 
-        foreach([$spec['helpers']] as $name => $helper) {
+        foreach([$json['helpers']] as $name => $helper) {
             if (is_string($helper)) {
                 $transformedHelpers[$name] = $helper;
             } elseif (isset($helper['php'])) {

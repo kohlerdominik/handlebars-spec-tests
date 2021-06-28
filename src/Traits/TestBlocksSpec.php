@@ -7,16 +7,16 @@ use KohlerDominik\SpecTester\Specifications\AbstractSpecification;
 trait TestBlocksSpec
 {
     /**
-     * @dataProvider blockSpecificationDataProvider
+     * @dataProvider blocksSpecificationDataProvider
      *
      * @param AbstractSpecification $specification
      */
-    public function testBlockSpecification($specification)
+    public function testBlocksSpecification($specification)
     {
         return $this->runSpecificationTest($specification);
     }
 
-    public function blockSpecificationDataProvider()
+    public function blocksSpecificationDataProvider()
     {
         yield from $this->parseSpecFile('blocks.json');
     }
