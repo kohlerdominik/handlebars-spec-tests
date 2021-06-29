@@ -41,6 +41,30 @@ abstract class AbstractSpecification
         return $this->data;
     }
 
+    public function getStringData()
+    {
+        if (is_null($this->getData())) {
+            return null;
+        } elseif (is_array($this->getData())) {
+            return array_filter($this->getData(), function ($data) {
+                return ($data['!code'] ?? false) === false;
+            });
+        }
+    }
+
+    public function getCallbackData()
+    {
+        if (is_array($this->getData())) {
+            $filtered = array_filter($this->getData(), function ($data) {
+                return ($data['!code'] ?? false) === true;
+            });
+
+            return $this->parseCallables($filtered);
+        }
+
+        return null;
+    }
+
     public function setDescription(string $description)
     {
         $this->description = $description;
@@ -78,7 +102,9 @@ abstract class AbstractSpecification
 
     public function getHelpers()
     {
-        return $this->helpers;
+        return (is_null($this->helpers))
+            ? null
+            : $this->parseCallables($this->helpers ?? []);
     }
 
     public function makeKey(): string
@@ -90,5 +116,25 @@ abstract class AbstractSpecification
             $this->getMessage() ?? 'no Message',
             "[$id]",
         ]);
+    }
+
+    public function descriptionMatches($needle)
+    {
+        return strpos($this->getDescription(), $needle) !== false;
+    }
+
+    protected function parseCallables($callables)
+    {
+        $result = [];
+
+        foreach($callables as $name => $callable) {
+            if (is_string($callable)) {
+                $result[$name] = $callable;
+            } elseif (isset($callable['php'])) {
+                $result[$name] = eval('return ' . ($callable['php']) . ';');
+            }
+        }
+
+        return $result;
     }
 }
