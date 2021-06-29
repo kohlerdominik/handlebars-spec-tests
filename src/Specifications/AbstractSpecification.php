@@ -58,11 +58,12 @@ abstract class AbstractSpecification
             $filtered = array_filter($this->getData(), function ($data) {
                 return ($data['!code'] ?? false) === true;
             });
-
-            return $this->parseCallables($filtered);
+            $parsed = $this->parseCallables($filtered);
         }
 
-        return null;
+        return (isset($parsed) && !empty($parsed))
+            ? $parsed
+            : null;
     }
 
     public function setDescription(string $description)
